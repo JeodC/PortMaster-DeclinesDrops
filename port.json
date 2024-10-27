@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "name": "declinesdrops.zip",
+  "items": [
+    "Decline's Drops.sh",
+    "declinesdrops"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Decline's Drops",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Grab your punching gloves, put your clogs on and smash your way in the world of Decline's Drops, a fully hand-drawn platform-brawler full of weird frogs, bizarre chickens and odd hydras! Avenge your destroyed garden and defeat the 6 heads of the Eternal Corp.! If you can, that is.",
+    "desc_md": null,
+    "inst": "Purchase the game on Steam and add the game data to `ports/declinesdrops/gamedata`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+	  "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": null,
+    "reqs": [
+	  "power"
+	],
+    "arch": [
+      "aarch64"
+    ]
+  }
+}
