@@ -22,6 +22,21 @@ chmod 777 "$TOOLDIR/oggenc"
 
 cd "$GAMEDIR"
 
+unzip_patch() {
+    # Unzip the xdelta
+    echo "Unzipping the patch file..."
+    cat "./tools/patches/declines.zip."* > "./tools/patches/declines.zip"
+
+    # Attempt to unzip
+    if unzip "./tools/patches/declines.zip" -d "./tools/patches"; then
+        echo "Unzip successful, removing the zip file..."
+        rm -rf "./tools/patches/declines.zip" "./tools/patches/declines.zip."*
+    else
+        echo "Unzip failed, exiting..."
+        sleep 2
+        exit 1
+    fi
+}
 apply_xdelta() {
     # Check if the data.win file exists and apply xdelta
     if [ -f "$DATADIR/data.win" ]; then
@@ -85,21 +100,10 @@ process_game() {
     $DATADIR/*.mp4 $DATADIR/*.html
     rm -rf $DATADIR/*.exe $DATADIR/*.dll $DATADIR/.gitkeep
     echo "Removed unnecessary files"
-    
-    # Unzip the xdelta
-    echo "Unzipping the patch file..."
-    cat "./tools/patches/declines.zip."* > "./tools/patches/declines.zip"
-
-    # Attempt to unzip
-    if unzip "./tools/patches/declines.zip"; then
-        echo "Unzip successful, removing the zip file..."
-        rm -rf "./tools/patches/declines.zip"
-    else
-        echo "Unzip failed, exiting..."
-        sleep 2
-        exit 1
+    # Check for patch file
+    if [ ! -f "./tools/patches/declines.xdelta" ]; then
+        unzip_patch
     fi
-
     apply_xdelta
     compress_audio
     sleep 1
