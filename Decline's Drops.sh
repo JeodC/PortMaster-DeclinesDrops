@@ -51,13 +51,13 @@ fi
 # Display loading splash
 if [ -f "$GAMEDIR/patchlog.txt" ]; then
     $ESUDO ./libs/splash "splash.png" 1 
-    $ESUDO ./libs/splash "splash.png" 2000
+    $ESUDO ./libs/splash "splash.png" 3000
 fi
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext" -c "declines.gptk" &
+$GPTOKEYB "gmloadernext.aarch64" -c "declines.gptk" &
 pm_platform_helper "gmloadernext"
-./gmloadernext game.apk
+./gmloadernext.aarch64 -c gmloader.json
 
 # Cleanup
 pm_finish
